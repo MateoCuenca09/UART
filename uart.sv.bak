@@ -1,0 +1,116 @@
+module uart_rx (
+    input logic clk,
+    input logic reset_n,
+    input logic rx,
+    output logic tx
+);
+
+// Parámetros de configuración UART
+parameter CLK_FREQ = 100_000_000; // Frecuencia del reloj (por ejemplo, 100 MHz)
+parameter BAUD_RATE = 9600; // Tasa de baudios (por ejemplo, 9600 bps)
+
+// Contadores para el generador de baudios
+logic [11:0] baud_counter = 0;
+logic [15:0] bit_counter = 0;
+
+// Estado del UART
+enum logic [1:0] {
+    IDLE = 2'b00,
+    START_BIT = 2'b01,
+    DATA_BITS = 2'b10,
+    STOP_BIT = 2'b11
+} state, next_state;
+
+// Registro para almacenar el byte recibido
+reg [7:0] rx_byte = 8'd0;
+
+// Lógica para transmitir datos
+always_ff @(posedge clk or negedge reset_n) begin
+    if (!reset_n)
+        tx <= 1'b1; // Inicialmente, el TX está alto en reposo
+    else begin
+        case (state)
+            IDLE: begin
+                tx <= 1'b1; // En estado IDLE, el TX está alto
+                if (!rx) // Si se detecta un flanco de bajada en RX
+                    next_state = START_BIT;
+            end
+            START_BIT: begin
+                tx <= 1'b0; // En el bit de inicio, el TX se coloca en bajo
+                if (baud_counter == (CLK_FREQ / BAUD_RATE) - 1) begin
+                    baud_counter <= 0;
+                    next_state = DATA_BITS;
+                end else
+                    baud_counter <= baud_counter + 1;
+            end
+            DATA_BITS: begin
+                tx <= rx_byte[bit_counter]; // Transmitir el siguiente bit del byte
+                if (baud_counter == (CLK_FREQ / BAUD_RATE) - 1) begin
+                    baud_counter <= 0;
+                    bit_counter <= bit_counter + 1;
+                    if (bit_counter == 7) // Si hemos transmitido los 8 bits de datos
+                        next_state = STOP_BIT;
+                end else
+                    baud_counter <= baud_counter + 1;
+            end
+            STOP_BIT: begin
+                tx <= 1'b1; // En el bit de parada, el TX se coloca en alto
+                if (baud_counter == (CLK_FREQ / BAUD_RATE) - 1) begin
+                    baud_counter <= 0;
+                    bit_counter <= 0;
+                    state <= IDLE; // Regresar al estado IDLE después del bit de parada
+                end else
+                    baud_counter <= baud_counter + 1;
+            end
+        endcase
+    end
+end
+
+// Lógica para recibir datos
+always_ff @(posedge clk or negedge reset_n) begin
+    if (!reset_n)
+        rx_byte <= 8'd0; // Reiniciar el byte recibido durante el reset
+    else begin
+        case (state)
+            IDLE: begin
+                if (!rx) // Si se detecta un flanco de bajada en RX
+                    next_state = START_BIT;
+            end
+            START_BIT: begin
+                if (baud_counter == (CLK_FREQ / BAUD_RATE) - 1) begin
+                    baud_counter <= 0;
+                    next_state = DATA_BITS;
+                end else
+                    baud_counter <= baud_counter + 1;
+            end
+            DATA_BITS: begin
+                if (baud_counter == (CLK_FREQ / BAUD_RATE) - 1) begin
+                    baud_counter <= 0;
+                    rx_byte <= {rx_byte[6:0], rx}; // Almacenar el bit recibido en el byte
+                    bit_counter <= bit_counter + 1;
+                    if (bit_counter == 7) // Si hemos recibido los 8 bits de datos
+                        next_state = STOP_BIT;
+                end else
+                    baud_counter <= baud_counter + 1;
+            end
+            STOP_BIT: begin
+                if (baud_counter == (CLK_FREQ / BAUD_RATE) - 1) begin
+                    baud_counter <= 0;
+                    bit_counter <= 0;
+                    state <= IDLE; // Regresar al estado IDLE después del bit de parada
+                end else
+                    baud_counter <= baud_counter + 1;
+            end
+        endcase
+    end
+end
+
+// Cambio de estado
+always_ff @(posedge clk or negedge reset_n) begin
+    if (!reset_n)
+        state <= IDLE; // Inicialmente, el estado es IDLE durante el reset
+    else
+        state <= next_state; // Cambiar al próximo estado
+end
+
+endmodule

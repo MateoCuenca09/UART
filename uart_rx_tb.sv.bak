@@ -1,0 +1,40 @@
+module uart_rx_tb;
+logic mclkx16;
+logic reset;
+logic read;
+logic rx;
+logic[7:0] rdata;
+logic rxrdy;
+logic parityerr;
+logic framingerr;
+logic overrun;
+
+uart_rx dut( mclkx16, reset, read, rx, rdata, rxrdy, parityerr, framingerr, overrun);
+initial
+begin
+    message <= 8'h0f;
+    rx <= 1;
+    read <= 1; #5;
+
+    // txclk starts at 15
+    reset <= 1; #10; reset <= 0; #5;
+
+    // at 20
+    rx <= 0; # 160; // start
+    rx <= message[0]; #160;
+    rx <= message[1]; #160;
+    rx <= message[2]; #160;
+    rx <= message[3]; #160;
+    rx <= message[4]; #160;
+    rx <= message[5]; #160;
+    rx <= message[6]; #160;
+    rx <= message[7]; #160;
+    rx <= 1; #160; // parity
+    rx <= 1; #160; // stop
+end
+always
+begin
+    mclkx16 <= 1; # 5; mclkx16 <= 0; # 5;
+end
+
+endmodule
