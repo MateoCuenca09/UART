@@ -1,0 +1,36 @@
+m255
+K4
+z2
+!s11f vlog 2021.2 2021.04, Apr 14 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/QuartusProyects/UART/simulation/modelsim
+vuart_tx
+DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+!s110 1708110273
+!i10b 1
+!s100 =RKmZFoRkP29gfXNSYL^20
+I2NCTT:[MX>EF3F]lcZbzR3
+S1
+R0
+w1708069960
+8C:/QuartusProyects/UART/uart_tx.sv
+FC:/QuartusProyects/UART/uart_tx.sv
+!i122 0
+L0 1 105
+VDg1SIo80bB@j0V0VzS_@n1
+OL;L;2021.2;73
+r1
+!s85 0
+31
+!s108 1708110273.000000
+!s107 C:/QuartusProyects/UART/uart_tx.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/QuartusProyects/UART|C:/QuartusProyects/UART/uart_tx.sv|
+!i113 0
+o-sv -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+!s92 -sv -work work +incdir+C:/QuartusProyects/UART -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+tCvgOpt 0

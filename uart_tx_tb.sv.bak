@@ -1,0 +1,22 @@
+module uart_tx_tb;
+    logic mclkx16 // clock que le llega al uart
+    logic reset 
+    logic write
+    logic[7:0] data
+    logic tx
+    logic txrdy
+
+    dut uart_tx(mclkx16, reset, write, [7:0] data, tx, txrdy);
+
+    begin
+        data <= 8'hF0
+        reset <= 1; #5; reset <= 0;
+        write <= 0; #5; write <=1; #100;
+    end
+
+    always
+    begin
+        mclkx16 <= 0; #6510; mclkx16 <= 1; #6510;
+    end
+
+endmodule

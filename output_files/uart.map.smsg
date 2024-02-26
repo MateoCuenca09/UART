@@ -1,0 +1,2 @@
+Warning (10268): Verilog HDL information at uart.sv(36): always construct contains both blocking and non-blocking assignments File: C:/QuartusProyects/UART/uart.sv Line: 36
+Warning (10268): Verilog HDL information at uart.sv(84): always construct contains both blocking and non-blocking assignments File: C:/QuartusProyects/UART/uart.sv Line: 84
