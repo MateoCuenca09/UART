@@ -5,6 +5,8 @@ module uart(input logic mclkx16, input logic reset, input logic read, input logi
             output logic [7:0] dataout,
             input logic rx, output logic tx);
 
+    // reset => conectar a boton 
+
     uart_tx trans(mclkx16, reset, write, datain, tx, txrdy);
     //receiver rec(mclkx16, reset, read, rx, dataout, rxrdy, parityerr, framingerr, overrun);
 endmodule

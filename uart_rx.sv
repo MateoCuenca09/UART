@@ -1,21 +1,26 @@
 module uart_rx(input logic mclkx16, input logic reset, input logic read, input logic rx,
-                output logic[7:0] rdata, output logic rxrdy, output logic parityerr, output logic framingerr, output logic overrun);
+                output logic[7:0] rdata, output logic rxrdy, output logic parityerr, output logic framingerr, output logic overrun,
+                // para testbench completo asigno señales internas como salida
+                output logic hunt, output logic idle, output logic [3:0] rxcnt, output logic rxclk, output logic [7:0] rsr,
+                output logic [7:0] rhr
+                );
 
-    logic [7:0] rhr;
-    logic [7:0] rsr;
+    //logic [7:0] rhr;
+    //logic [7:0] rsr;
     logic paritymode, rxparity, paritygen;
     logic rxstop;
-    logic idle, idle2, hunt;
+    //logic idle, hunt;
+    logic idle2; 
     logic read2;
-    logic rxclk;
-    logic [3:0] cnt;
+    //logic rxclk;
+    //logic [3:0] rxcnt;
 
     assign paritymode = 1'b1;
 
     always @ (posedge mclkx16 or posedge reset)
     begin
         if (reset) begin
-            cnt <= 0;
+            rxcnt <= 0;
             hunt <= 0;
         end
         else begin
@@ -25,13 +30,13 @@ module uart_rx(input logic mclkx16, input logic reset, input logic read, input l
                 hunt <= 0;
 
             if (hunt || !idle)
-                cnt <= cnt + 1;
+                rxcnt <= rxcnt + 1;
             else
-                cnt <= 0;
+                rxcnt <= 0;
         end
     end
 	 
-    assign rxclk = cnt[3];
+    assign rxclk = rxcnt[3];
 
     always @ (posedge rxclk or posedge reset)
     begin
@@ -42,7 +47,7 @@ module uart_rx(input logic mclkx16, input logic reset, input logic read, input l
         end
     end
 
-    assign rdata = ~read ? rhr : 8'h00;
+    assign rdata = ~read ? rhr : 8'hXX;
 
     always @ (posedge mclkx16 or posedge reset)
     begin
