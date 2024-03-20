@@ -1,11 +1,13 @@
 module uart_tx(input logic mclkx16, input logic reset, input logic write, input logic[7:0] data,
-                   output logic tx, output logic txrdy);
+                   output logic tx, output logic txrdy
+                   , output logic [7:0] thr, output logic [7:0] tsr, output logic txclk, output logic txparity, output logic paritycycle);
 
-    logic [7:0] thr; // transmitter hold register
-    logic [7:0] tsr; // transmitter shift register
-    logic paritymode, txparity, paritycycle; // modo, recuento y ciclo de paridad
+    //logic [7:0] thr; // transmitter hold register
+    //logic [7:0] tsr; // transmitter shift register
+    //logic paritymode, txparity, paritycycle; // modo, recuento y ciclo de paridad
     logic tag1, tag2; // 
-    logic txclk, txdone, txdatardy, txloaded;
+    //logic txclk; 
+    logic txdone, txdatardy, txloaded;
     logic [3:0] cnt;
 
     assign paritymode = 1'b1;

@@ -6,14 +6,21 @@ module uart_tx_tb;
     logic tx;
     logic txrdy;
 
-    uart_tx dut(mclkx16, reset, write, data, tx, txrdy);
+    logic [7:0] thr;
+    logic [7:0] tsr; 
+    logic txclk; 
+    logic txparity;
+    logic paritycycle;
+
+
+    uart_tx dut(mclkx16, reset, write, data, tx, txrdy, thr, tsr, txclk, txparity, paritycycle);
 	
-    assign write = mclkx16;
     
     initial
     begin
-        data <= 8'b00000111;
+        data <= 8'b00001111;
         reset <= 1; #5; reset <= 0;
+		  write <= 1; #1000; write <= 0; #500; write <= 1;
     end
 
     always
