@@ -42,7 +42,7 @@ module uart_rx(input logic mclkx16, input logic reset, input logic read, input l
         end
     end
 
-    assign rdata = ~read ? rhr : 8'h00;
+    assign rdata = ~read ? rhr : 8'hXX;
 
     always @ (posedge mclkx16 or posedge reset)
     begin
