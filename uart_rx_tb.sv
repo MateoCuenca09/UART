@@ -10,9 +10,17 @@ logic framingerr;
 logic overrun;
 logic [7:0] message;
 assign read = ~rxrdy;
+                
+logic hunt;
+logic idle; 
+logic [3:0] rxcnt; 
+logic rxclk;
+logic [7:0] rsr;                
+logic [7:0] rhr;
 
+uart_rx dut(mclkx16, reset, read, rx, rdata, rxrdy, parityerr, framingerr, overrun,
+hunt, idle, rxcnt, rxclk, rsr, rhr);
 
-uart_rx dut( mclkx16, reset, read, rx, rdata, rxrdy, parityerr, framingerr, overrun);
 initial
 begin
     message <= 8'h0f;
