@@ -9,7 +9,7 @@ logic parityerr;
 logic framingerr;
 logic overrun;
 logic [7:0] message;
-assign read = ~rxrdy;
+//assign read = ~rxrdy; // aca me va a entregar el valor apenas lo tenga...
                 
 logic hunt;
 logic idle; 
@@ -23,8 +23,9 @@ hunt, idle, rxcnt, rxclk, rsr, rhr);
 
 initial
 begin
+    read <= 1; #104166;
     message <= 8'h0f;
-    rx <= 1;
+    rx <= 1;#104166;
 
     // txclk starts at 15
     reset <= 1; #10; reset <= 0; #5;
@@ -42,44 +43,11 @@ begin
     rx <= 1; #104166; // parity
     rx <= 1; #104166; // stop
 
-    // at 20
-    rx <= 0; # 104166; // start
-    rx <= message[0]; #104166;
-    rx <= message[1]; #104166;
-    rx <= message[2]; #104166;
-    rx <= message[3]; #104166;
-    rx <= message[4]; #104166;
-    rx <= message[5]; #104166;
-    rx <= message[6]; #104166;
-    rx <= message[7]; #104166;
-    rx <= 1; #104166; // parity
-    rx <= 1; #104166; // stop
+    read <= 0; #104166;
+    read <= 1; #104166;
 
-    // at 20
-    rx <= 0; # 104166; // start
-    rx <= message[0]; #104166;
-    rx <= message[1]; #104166;
-    rx <= message[2]; #104166;
-    rx <= message[3]; #104166;
-    rx <= message[4]; #104166;
-    rx <= message[5]; #104166;
-    rx <= message[6]; #104166;
-    rx <= message[7]; #104166;
-    rx <= 1; #104166; // parity
-    rx <= 1; #104166; // stop
 
-    // at 20
-    rx <= 0; # 104166; // start
-    rx <= message[0]; #104166;
-    rx <= message[1]; #104166;
-    rx <= message[2]; #104166;
-    rx <= message[3]; #104166;
-    rx <= message[4]; #104166;
-    rx <= message[5]; #104166;
-    rx <= message[6]; #104166;
-    rx <= message[7]; #104166;
-    rx <= 1; #104166; // parity
-    rx <= 1; #104166; // stop
+    
 end
 always
 begin
