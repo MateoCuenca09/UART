@@ -1,6 +1,7 @@
 m255
 K4
 z2
+!s99 nomlopt
 !s11f vlog 2021.2 2021.04, Apr 14 2021
 13
 !s112 1.1
@@ -8,29 +9,114 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dC:/QuartusProyects/UART/simulation/modelsim
-vuart_tx
-DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-!s110 1708110273
+Z0 dC:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/simulation/modelsim
+T_opt
+!s110 1711335796
+VbazH8J_^z2oUhiXKD5Szn0
+04 7 4 work uart_tb fast 0
+=1-f44637b24c7e-6600e974-262-85c
+!s124 OEM10U4 
+o-quiet -auto_acc_if_foreign -work work +acc
+Z1 tCvgOpt 0
+n@_opt
+OL;O;2021.2;73
+vuart
+Z2 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+!s110 1711335786
 !i10b 1
-!s100 =RKmZFoRkP29gfXNSYL^20
-I2NCTT:[MX>EF3F]lcZbzR3
+!s100 R=QTk60cDKWH2XFNjknhL2
+I1<6nMkQ=0h3DSan_J9<0N3
 S1
 R0
-w1708069960
-8C:/QuartusProyects/UART/uart_tx.sv
-FC:/QuartusProyects/UART/uart_tx.sv
+w1711317663
+8C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart.sv
+FC:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart.sv
 !i122 0
-L0 1 105
-VDg1SIo80bB@j0V0VzS_@n1
-OL;L;2021.2;73
+L0 1 25
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z4 OL;L;2021.2;73
 r1
 !s85 0
 31
-!s108 1708110273.000000
-!s107 C:/QuartusProyects/UART/uart_tx.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/QuartusProyects/UART|C:/QuartusProyects/UART/uart_tx.sv|
+Z5 !s108 1711335786.000000
+!s107 C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART|C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart.sv|
 !i113 0
-o-sv -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-!s92 -sv -work work +incdir+C:/QuartusProyects/UART -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-tCvgOpt 0
+Z6 o-sv -work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z7 !s92 -sv -work work {+incdir+C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART} -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R1
+vuart_rx
+R2
+Z8 !s110 1711335787
+!i10b 1
+!s100 A3Of3MUJJKc8P1BZKoX6[1
+I0_:9IAHz`C<R2>j?7Imn32
+S1
+R0
+w1711310554
+8C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart_rx.sv
+FC:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart_rx.sv
+!i122 2
+L0 1 111
+R3
+R4
+r1
+!s85 0
+31
+Z9 !s108 1711335787.000000
+!s107 C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart_rx.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART|C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart_rx.sv|
+!i113 0
+R6
+R7
+R1
+vuart_tb
+R2
+R8
+!i10b 1
+!s100 P0_le2PFN;3MOaN8QgNNB2
+IJ[f14YgHcQ<0`1IcVLo3b3
+S1
+R0
+w1711335697
+8C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart_tb.sv
+FC:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart_tb.sv
+!i122 3
+L0 1 71
+R3
+R4
+r1
+!s85 0
+31
+R9
+!s107 C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart_tb.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART|C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart_tb.sv|
+!i113 0
+R6
+R7
+R1
+vuart_tx
+R2
+R8
+!i10b 1
+!s100 =RKmZFoRkP29gfXNSYL^20
+I;NlHE7^k1ZTPXEY`1YV4Z1
+S1
+R0
+w1711310421
+8C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart_tx.sv
+FC:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart_tx.sv
+!i122 1
+L0 1 105
+R3
+R4
+r1
+!s85 0
+31
+R5
+!s107 C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart_tx.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART|C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart_tx.sv|
+!i113 0
+R6
+R7
+R1

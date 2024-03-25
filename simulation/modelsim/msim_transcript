@@ -24,13 +24,76 @@
 # Copying C:/intelFPGA/21.1/questa_fse/win64/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vlog -sv -work work +incdir+C:/QuartusProyects/UART {C:/QuartusProyects/UART/uart_tx.sv}
+# vlog -sv -work work +incdir+C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica\ 1/MiFinal/UART {C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart.sv}
 # Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
-# Start time: 16:04:33 on Feb 16,2024
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/QuartusProyects/UART" C:/QuartusProyects/UART/uart_tx.sv 
+# Start time: 00:03:06 on Mar 25,2024
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART" C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart.sv 
+# -- Compiling module uart
+# 
+# Top level modules:
+# 	uart
+# End time: 00:03:06 on Mar 25,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica\ 1/MiFinal/UART {C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart_tx.sv}
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 00:03:06 on Mar 25,2024
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART" C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart_tx.sv 
 # -- Compiling module uart_tx
 # 
 # Top level modules:
 # 	uart_tx
-# End time: 16:04:33 on Feb 16,2024, Elapsed time: 0:00:00
+# End time: 00:03:07 on Mar 25,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica\ 1/MiFinal/UART {C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart_rx.sv}
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 00:03:07 on Mar 25,2024
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART" C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart_rx.sv 
+# -- Compiling module uart_rx
+# 
+# Top level modules:
+# 	uart_rx
+# End time: 00:03:07 on Mar 25,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica\ 1/MiFinal/UART {C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart_tb.sv}
+# Questa Intel Starter FPGA Edition-64 vlog 2021.2 Compiler 2021.04 Apr 14 2021
+# Start time: 00:03:07 on Mar 25,2024
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART" C:/Users/cuenc/OneDrive/Escritorio/Mateo/UCC/0----FINALES/Microelectronica 1/MiFinal/UART/uart_tb.sv 
+# -- Compiling module uart_tb
+# 
+# Top level modules:
+# 	uart_tb
+# End time: 00:03:07 on Mar 25,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+vsim -voptargs=+acc work.uart_tb
+# vsim -voptargs="+acc" work.uart_tb 
+# Start time: 00:03:16 on Mar 25,2024
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading sv_std.std
+# Loading work.uart_tb(fast)
+# Loading work.uart(fast)
+# Loading work.uart_tx(fast)
+# Loading work.uart_rx(fast)
+add wave -position end  sim:/uart_tb/datain
+add wave -position end  sim:/uart_tb/dataout
+add wave -position end  sim:/uart_tb/framingerr
+add wave -position end  sim:/uart_tb/i
+add wave -position end  sim:/uart_tb/mclkx16
+add wave -position end  sim:/uart_tb/o
+add wave -position end  sim:/uart_tb/overrun
+add wave -position end  sim:/uart_tb/parityerr
+add wave -position end  sim:/uart_tb/read
+add wave -position end  sim:/uart_tb/reset
+add wave -position end  sim:/uart_tb/rx
+add wave -position end  sim:/uart_tb/rxrdy
+add wave -position end  sim:/uart_tb/tx
+add wave -position end  sim:/uart_tb/txrdy
+add wave -position end  sim:/uart_tb/write
+run
+run
+run
+run
+run
+# Causality operation skipped due to absence of debug database file
+# End time: 00:04:56 on Mar 25,2024, Elapsed time: 0:01:40
 # Errors: 0, Warnings: 0

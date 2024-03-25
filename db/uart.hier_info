@@ -1,32 +1,37 @@
-|main
-clk => mclk.CLK
-clk => cnt[0].CLK
-clk => cnt[1].CLK
-clk => cnt[2].CLK
-clk => cnt[3].CLK
-clk => cnt[4].CLK
-clk => cnt[5].CLK
-clk => cnt[6].CLK
-clk => cnt[7].CLK
-clk => cnt[8].CLK
-reset => neg_reset.IN1
-dip1 => data[0].DATAIN
-dip2 => data[1].DATAIN
-dip3 => data[2].DATAIN
-dip4 => data[3].DATAIN
-rx => ~NO_FANOUT~
-tx << uart_tx:trans.port4
-data[0] << dip1.DB_MAX_OUTPUT_PORT_TYPE
-data[1] << dip2.DB_MAX_OUTPUT_PORT_TYPE
-data[2] << dip3.DB_MAX_OUTPUT_PORT_TYPE
-data[3] << dip4.DB_MAX_OUTPUT_PORT_TYPE
-data[4] << <GND>
-data[5] << <GND>
-data[6] << <GND>
-data[7] << <GND>
+|uart_tb
 
 
-|main|uart_tx:trans
+|uart_tb|uart:dut
+mclkx16 => mclkx16.IN2
+reset => reset.IN2
+rx => rx.IN1
+read => read.IN1
+rxrdy <= uart_rx:rec.port5
+dataout[0] <= uart_rx:rec.port4
+dataout[1] <= uart_rx:rec.port4
+dataout[2] <= uart_rx:rec.port4
+dataout[3] <= uart_rx:rec.port4
+dataout[4] <= uart_rx:rec.port4
+dataout[5] <= uart_rx:rec.port4
+dataout[6] <= uart_rx:rec.port4
+dataout[7] <= uart_rx:rec.port4
+parityerr <= uart_rx:rec.port6
+framingerr <= uart_rx:rec.port7
+overrun <= uart_rx:rec.port8
+write => write.IN1
+datain[0] => datain[0].IN1
+datain[1] => datain[1].IN1
+datain[2] => datain[2].IN1
+datain[3] => datain[3].IN1
+datain[4] => datain[4].IN1
+datain[5] => datain[5].IN1
+datain[6] => datain[6].IN1
+datain[7] => datain[7].IN1
+txrdy <= uart_tx:trans.port5
+tx <= uart_tx:trans.port4
+
+
+|uart_tb|uart:dut|uart_tx:trans
 mclkx16 => cnt[0].CLK
 mclkx16 => cnt[1].CLK
 mclkx16 => cnt[2].CLK
@@ -76,5 +81,74 @@ data[6] => thr[6].ADATA
 data[7] => thr[7].ADATA
 tx <= tx~reg0.DB_MAX_OUTPUT_PORT_TYPE
 txrdy <= txdatardy.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|uart_tb|uart:dut|uart_rx:rec
+mclkx16 => rhr[0].CLK
+mclkx16 => rhr[1].CLK
+mclkx16 => rhr[2].CLK
+mclkx16 => rhr[3].CLK
+mclkx16 => rhr[4].CLK
+mclkx16 => rhr[5].CLK
+mclkx16 => rhr[6].CLK
+mclkx16 => rhr[7].CLK
+mclkx16 => read2.CLK
+mclkx16 => idle2.CLK
+mclkx16 => overrun~reg0.CLK
+mclkx16 => framingerr~reg0.CLK
+mclkx16 => parityerr~reg0.CLK
+mclkx16 => rxrdy~reg0.CLK
+mclkx16 => hunt.CLK
+mclkx16 => cnt[0].CLK
+mclkx16 => cnt[1].CLK
+mclkx16 => cnt[2].CLK
+mclkx16 => cnt[3].CLK
+reset => rxstop.ACLR
+reset => paritygen.ALOAD
+reset => rxparity.PRESET
+reset => rsr[0].PRESET
+reset => rsr[1].PRESET
+reset => rsr[2].PRESET
+reset => rsr[3].PRESET
+reset => rsr[4].PRESET
+reset => rsr[5].PRESET
+reset => rsr[6].PRESET
+reset => rsr[7].PRESET
+reset => idle2.PRESET
+reset => overrun~reg0.ACLR
+reset => framingerr~reg0.ACLR
+reset => parityerr~reg0.ACLR
+reset => rxrdy~reg0.ACLR
+reset => idle.PRESET
+reset => hunt.ACLR
+reset => cnt[0].ACLR
+reset => cnt[1].ACLR
+reset => cnt[2].ACLR
+reset => cnt[3].ACLR
+reset => read2.ENA
+reset => rhr[7].ENA
+reset => rhr[6].ENA
+reset => rhr[5].ENA
+reset => rhr[4].ENA
+reset => rhr[3].ENA
+reset => rhr[2].ENA
+reset => rhr[1].ENA
+reset => rhr[0].ENA
+read => always2.IN1
+read => read2.DATAIN
+rx => rxstop.DATAA
+rx => always0.IN1
+rdata[0] <= rhr[0].DB_MAX_OUTPUT_PORT_TYPE
+rdata[1] <= rhr[1].DB_MAX_OUTPUT_PORT_TYPE
+rdata[2] <= rhr[2].DB_MAX_OUTPUT_PORT_TYPE
+rdata[3] <= rhr[3].DB_MAX_OUTPUT_PORT_TYPE
+rdata[4] <= rhr[4].DB_MAX_OUTPUT_PORT_TYPE
+rdata[5] <= rhr[5].DB_MAX_OUTPUT_PORT_TYPE
+rdata[6] <= rhr[6].DB_MAX_OUTPUT_PORT_TYPE
+rdata[7] <= rhr[7].DB_MAX_OUTPUT_PORT_TYPE
+rxrdy <= rxrdy~reg0.DB_MAX_OUTPUT_PORT_TYPE
+parityerr <= parityerr~reg0.DB_MAX_OUTPUT_PORT_TYPE
+framingerr <= framingerr~reg0.DB_MAX_OUTPUT_PORT_TYPE
+overrun <= overrun~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 

@@ -8,12 +8,12 @@ module uart_tx_tb;
 
     uart_tx dut(mclkx16, reset, write, data, tx, txrdy);
 	
-    assign write = mclkx16;
     
     initial
     begin
-        data <= 8'b00000111;
+        data <= 8'b00001111;
         reset <= 1; #5; reset <= 0;
+		write <= 1; #3255; write <= 0; #3255; write <= 1;
     end
 
     always
