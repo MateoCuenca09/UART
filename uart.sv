@@ -19,7 +19,7 @@ module uart(
             output logic txrdy, // dato en proceso de envio en Tx
             output logic tx // salida de datos en serie del Tx
             );
-
-    uart_tx trans(mclkx16, reset, write, datain, tx, txrdy);
-    uart_rx rec(mclkx16, reset, read, rx, dataout, rxrdy, parityerr, framingerr, overrun);
+    assign paritymode = 1'b0;
+    uart_tx trans(mclkx16, reset, write, paritymode, datain, tx, txrdy);
+    uart_rx rec(mclkx16, reset, read, rx, paritymode, dataout, rxrdy, parityerr, framingerr, overrun);
 endmodule

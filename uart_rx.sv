@@ -1,16 +1,23 @@
-module uart_rx(input logic mclkx16, input logic reset, input logic read, input logic rx,
-                output logic[7:0] rdata, output logic rxrdy, output logic parityerr, output logic framingerr, output logic overrun);
+module uart_rx(input logic mclkx16, 
+                input logic reset, 
+                input logic read, 
+                input logic rx,
+                input logic paritymode,
+                output logic[7:0] rdata, 
+                output logic rxrdy, 
+                output logic parityerr, 
+                output logic framingerr, 
+                output logic overrun);
 
     logic [7:0] rhr;
     logic [7:0] rsr;
-    logic paritymode, rxparity, paritygen;
+    logic rxparity, paritygen;
     logic rxstop;
     logic idle, idle2, hunt;
     logic read2;
     logic rxclk;
     logic [3:0] cnt;
 
-    assign paritymode = 1'b1;
 
     always @ (posedge mclkx16 or posedge reset)
     begin
